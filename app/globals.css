@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 :root {
   --gold: #D4AF37;
@@ -11,13 +12,13 @@
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
   color: var(--black);
   background: var(--white);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Playfair Display', serif;
 }
 
 .hero {
@@ -36,6 +37,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1px;
   font-size: 0.9rem;
   transition: color 0.3s;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .nav-link::after {

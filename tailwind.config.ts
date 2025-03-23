@@ -14,6 +14,7 @@ const config: Config = {
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
         serif: ['Bodoni Moda', 'serif'],
+        latienne: ['Playfair Display', 'serif'],
       },
     },
   },

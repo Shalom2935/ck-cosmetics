@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FaInstagram, FaFacebookF, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 import 'swiper/css';
@@ -12,28 +12,28 @@ const products = [
     name: 'Crème Visage',
     description: 'Une crème hydratante luxueuse pour une peau éclatante',
     price: '89,00 €',
-    image: '/creme-visage.png'
+    image: '/images/products/Crème-Visage.png'
   },
   {
     id: 2,
     name: 'Gommage',
     description: 'Un gommage doux et efficace pour une peau parfaite',
     price: '65,00 €',
-    image: '/gommage.png'
+    image: '/images/products/gommage.png'
   },
   {
     id: 3,
     name: 'Crème Corporel',
     description: 'Une crème nourrissante pour le corps',
     price: '75,00 €',
-    image: '/creme-corporel.png'
+    image: '/images/products/Lait-corporel.png'
   },
   {
     id: 4,
     name: 'Lotion',
     description: 'Une lotion tonifiante pour une peau revitalisée',
     price: '55,00 €',
-    image: '/lotion.png'
+    image: '/images/products/Lotions.png'
   }
 ];
 
@@ -79,111 +79,141 @@ export default function Home() {
           <motion.img
             src="/logo.svg"
             alt="CK Cosmetics"
-            className="w-64 mx-auto mb-8"
+            className="w-96 mx-auto mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           />
           <motion.h1
-            className="text-4xl md:text-6xl text-white font-light mb-8"
+            className="text-4xl md:text-6xl text-white font-light mb-8 font-latienne"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            Naturellement vous,<br />intensément beau
+            Naturellement Vous,<br />Intensément Beau
           </motion.h1>
         </div>
       </section>
 
-      <section id="about" className="py-20 bg-white">
+      <section id="about" className="py-24 bg-white">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-4xl font-light">L'excellence au service de votre beauté</h2>
-              <p className="text-gray-600">
-                CK Cosmetics incarne l'alliance parfaite entre luxe et efficacité. 
-                Nos produits, formulés avec les ingrédients les plus nobles, 
-                subliment votre beauté naturelle.
-              </p>
-            </div>
-            <div className="grid grid-cols-3 gap-4">
-              {/* Add your beauty model images here */}
+          <div className="relative h-[500px] flex">
+            <motion.div 
+              className="w-1/3 h-full relative border-r border-gray-200"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.5 }}
+            >
+              <img src="/images/models/model1.jpeg" alt="Beauty Model 1" className="w-full h-full object-cover" />
+            </motion.div>
+            <motion.div 
+              className="w-1/3 h-full relative border-r border-gray-200"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.5 }}
+            >
+              <img src="/images/models/model2.jpeg" alt="Beauty Model 2" className="w-full h-full object-cover" />
+            </motion.div>
+            <motion.div 
+              className="w-1/3 h-full relative"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.5 }}
+            >
+              <img src="/images/models/model3.jpeg" alt="Beauty Model 3" className="w-full h-full object-cover" />
+            </motion.div>
+            <div className="absolute inset-0 flex items-center justify-center flex-col text-center p-8 bg-black bg-opacity-40 text-white">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="max-w-3xl"
+              >
+                <h2 className="text-5xl font-light mb-6 font-latienne tracking-wide">
+                  L'excellence au service de votre beauté
+                </h2>
+                <div className="w-16 h-px bg-gold mx-auto mb-6"></div>
+                <p className="max-w-2xl mx-auto text-lg font-latienne leading-relaxed">
+                  CK Cosmetics incarne l'alliance parfaite entre luxe et efficacité. 
+                  Nos produits, formulés avec les ingrédients les plus nobles, 
+                  subliment votre beauté naturelle.
+                </p>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="products" className="py-20 bg-gray-50">
+      <section id="products" className="py-28 bg-gray-50">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-light text-center mb-12">Nos Produits</h2>
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-5xl font-light mb-4 font-latienne tracking-wide">Nos Produits</h2>
+            <div className="w-16 h-px bg-gold mx-auto mb-6"></div>
+            <p className="max-w-2xl mx-auto text-lg font-latienne text-gray-600">
+              Des formules uniques, conçues pour révéler votre beauté naturelle
+            </p>
+          </motion.div>
           
-          {!showGrid ? (
-            <Swiper
-              spaceBetween={30}
-              slidesPerView={1}
-              breakpoints={{
-                640: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
-              }}
-            >
-              {products.map((product) => (
-                <SwiperSlide key={product.id}>
-                  <div className="product-card">
-                    <img src={product.image} alt={product.name} className="w-full h-auto" />
-                    <div className="product-info">
-                      <h3 className="text-xl mb-2">{product.name}</h3>
-                      <p className="text-sm mb-2">{product.description}</p>
-                      <p className="text-gold">{product.price}</p>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          ) : (
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              {products.map((product) => (
-                <div key={product.id} className="product-card">
-                  <img src={product.image} alt={product.name} className="w-full h-auto" />
-                  <div className="product-info">
-                    <h3 className="text-xl mb-2">{product.name}</h3>
-                    <p className="text-sm mb-2">{product.description}</p>
-                    <p className="text-gold">{product.price}</p>
-                  </div>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            {products.map((product) => (
+              <motion.div 
+                key={product.id} 
+                className="product-card overflow-hidden shadow-md group"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.5, delay: product.id * 0.1 }}
+              >
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={product.image} 
+                    alt={product.name} 
+                    className="w-full h-80 object-cover transition-all duration-500 group-hover:scale-105" 
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-500"></div>
                 </div>
-              ))}
-            </motion.div>
-          )}
-          
-          <div className="text-center mt-8">
-            <button
-              onClick={() => setShowGrid(!showGrid)}
-              className="bg-black text-white px-8 py-3 rounded-full hover:bg-gold transition-colors"
-            >
-              {showGrid ? 'Vue Carrousel' : 'Voir Tout'}
-            </button>
-          </div>
+                <div className="bg-white p-8 text-center">
+                  <h3 className="text-2xl mb-3 font-latienne">{product.name}</h3>
+                  <div className="w-12 h-px bg-gold mx-auto mb-4"></div>
+                  <p className="text-gray-600 mb-4 font-latienne">{product.description}</p>
+                  <p className="text-gold text-xl font-latienne">{product.price}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       <section id="testimonials" className="py-20 bg-white">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-light text-center mb-12">Témoignages</h2>
+          <h2 className="text-4xl font-light text-center mb-12 font-latienne">Témoignages</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="testimonial-card">
-                <p className="mb-4">{testimonial.text}</p>
+              <motion.div 
+                key={testimonial.id} 
+                className="testimonial-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: testimonial.id * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <p className="mb-4 font-latienne">{testimonial.text}</p>
                 <div className="flex items-center">
-                  <span className="text-gold">{testimonial.name}</span>
+                  <span className="text-gold font-latienne">{testimonial.name}</span>
                   <div className="ml-auto">
                     {'★'.repeat(testimonial.rating)}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -191,20 +221,40 @@ export default function Home() {
 
       <section id="contact" className="py-20 bg-black text-white">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-light mb-12">Suivez-nous</h2>
+          <h2 className="text-4xl font-light mb-12 font-latienne">Suivez-nous</h2>
           <div className="flex justify-center space-x-8">
-            <a href="#" className="social-icon text-3xl">
+            <motion.a 
+              href="#" 
+              className="social-icon text-3xl"
+              whileHover={{ scale: 1.2, color: '#D4AF37' }}
+              transition={{ duration: 0.3 }}
+            >
               <FaInstagram />
-            </a>
-            <a href="#" className="social-icon text-3xl">
+            </motion.a>
+            <motion.a 
+              href="#" 
+              className="social-icon text-3xl"
+              whileHover={{ scale: 1.2, color: '#D4AF37' }}
+              transition={{ duration: 0.3 }}
+            >
               <FaFacebookF />
-            </a>
-            <a href="#" className="social-icon text-3xl">
+            </motion.a>
+            <motion.a 
+              href="#" 
+              className="social-icon text-3xl"
+              whileHover={{ scale: 1.2, color: '#D4AF37' }}
+              transition={{ duration: 0.3 }}
+            >
               <FaTiktok />
-            </a>
-            <a href="#" className="social-icon text-3xl">
+            </motion.a>
+            <motion.a 
+              href="#" 
+              className="social-icon text-3xl"
+              whileHover={{ scale: 1.2, color: '#D4AF37' }}
+              transition={{ duration: 0.3 }}
+            >
               <FaWhatsapp />
-            </a>
+            </motion.a>
           </div>
         </div>
       </section>
