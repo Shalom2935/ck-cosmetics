@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FaInstagram, FaFacebookF, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 import 'swiper/css';
+import { FaQuoteLeft } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
 
 const products = [
   {
@@ -42,7 +44,7 @@ const testimonials = [
     id: 1,
     name: 'Sophie L.',
     text: 'Les produits CK Cosmetics ont transformé ma routine beauté. Ma peau n\'a jamais été aussi belle !',
-    rating: 5
+    rating: 5,
   },
   {
     id: 2,
@@ -62,41 +64,43 @@ export default function Home() {
   const [showGrid, setShowGrid] = useState(false);
 
   return (
-    <main>
-      <nav className="fixed w-full z-50 bg-transparent">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-center space-x-8">
-            <a href="#about" className="nav-link">À propos</a>
-            <a href="#products" className="nav-link">Produits</a>
-            <a href="#testimonials" className="nav-link">Témoignages</a>
-            <a href="#contact" className="nav-link">Contact</a>
-          </div>
-        </div>
-      </nav>
-
+    <main className="bg-black text-white">
       <section className="hero">
-        <div className="container mx-auto px-6 text-center">
-          <motion.img
-            src="/logo.svg"
-            alt="CK Cosmetics"
-            className="w-96 mx-auto mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          />
-          <motion.h1
-            className="text-4xl md:text-6xl text-white font-light mb-8 font-latienne"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            Naturellement Vous,<br />Intensément Beau
-          </motion.h1>
+        {/* Hero section remains unchanged - already dark */}
+        <div className="container mx-auto px-6">
+          <nav className="py-4 mb-12">
+            <div className="flex items-center justify-center space-x-8">
+              <a href="#about" className="nav-link">À propos</a>
+              <a href="#products" className="nav-link">Produits</a>
+              <a href="#testimonials" className="nav-link">Témoignages</a>
+              <a href="#contact" className="nav-link">Contact</a>
+            </div>
+          </nav>
+          
+          <div className="text-center">
+            <motion.img
+              src="/logo.svg"
+              alt="CK Cosmetics"
+              className="w-96 mx-auto mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            />
+            <motion.h1
+              className="text-2xl md:text-2xl text-white font-light mb-8 font-bodoni tracking-widest"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              NATURELLEMENT VOUS, INTENSEMENT BEAU
+            </motion.h1>
+          </div>
         </div>
       </section>
 
-      <section id="about" className="py-24 bg-white">
-        <div className="container mx-auto px-6">
+      <section id="about" className="py-24 bg-black">
+        {/* About section remains unchanged - already dark */}
+        <div className="w-full">
           <div className="relative h-[500px] flex">
             <motion.div 
               className="w-1/3 h-full relative border-r border-gray-200"
@@ -127,7 +131,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="max-w-3xl"
               >
-                <h2 className="text-5xl font-light mb-6 font-latienne tracking-wide">
+                <h2 className="text-5xl font-light mb-6 font-bodoni tracking-wide">
                   L'excellence au service de votre beauté
                 </h2>
                 <div className="w-16 h-px bg-gold mx-auto mb-6"></div>
@@ -142,7 +146,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="products" className="py-28 bg-gray-50">
+      <section id="products" className="py-28 bg-gray-900">
         <div className="container mx-auto px-6">
           <motion.div 
             className="text-center mb-16"
@@ -151,9 +155,9 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl font-light mb-4 font-latienne tracking-wide">Nos Produits</h2>
+            <h2 className="text-5xl font-light mb-4 font-latienne tracking-wide text-white">Nos Produits</h2>
             <div className="w-16 h-px bg-gold mx-auto mb-6"></div>
-            <p className="max-w-2xl mx-auto text-lg font-latienne text-gray-600">
+            <p className="max-w-2xl mx-auto text-lg font-latienne text-gray-300">
               Des formules uniques, conçues pour révéler votre beauté naturelle
             </p>
           </motion.div>
@@ -181,10 +185,10 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-500"></div>
                 </div>
-                <div className="bg-white p-8 text-center">
-                  <h3 className="text-2xl mb-3 font-latienne">{product.name}</h3>
+                <div className="bg-gray-800 p-8 text-center">
+                  <h3 className="text-2xl mb-3 font-latienne text-white">{product.name}</h3>
                   <div className="w-12 h-px bg-gold mx-auto mb-4"></div>
-                  <p className="text-gray-600 mb-4 font-latienne">{product.description}</p>
+                  <p className="text-gray-300 mb-4 font-latienne">{product.description}</p>
                   <p className="text-gold text-xl font-latienne">{product.price}</p>
                 </div>
               </motion.div>
@@ -193,24 +197,35 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="testimonials" className="py-20 bg-white">
+      <section id="testimonials" className="py-20 bg-black">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-light text-center mb-12 font-latienne">Témoignages</h2>
+          <h2 className="text-4xl font-light text-center mb-12 font-bodoni text-white">Témoignages</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
               <motion.div 
                 key={testimonial.id} 
-                className="testimonial-card"
+                className="testimonial-card relative p-8 bg-gray-800"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: testimonial.id * 0.1 }}
                 viewport={{ once: true }}
               >
-                <p className="mb-4 font-latienne">{testimonial.text}</p>
-                <div className="flex items-center">
-                  <span className="text-gold font-latienne">{testimonial.name}</span>
-                  <div className="ml-auto">
-                    {'★'.repeat(testimonial.rating)}
+                <div className="absolute top-4 left-4 text-gold opacity-25">
+                  <FaQuoteLeft className="text-6xl" />
+                </div>
+                <div className="flex flex-col items-center justify-center h-full p-5">
+                  <p className="mb-6 text-lg text-center font-latienne italic text-gray-200">
+                    "{testimonial.text}"
+                  </p>
+                  <div className="text-center">
+                    <h4 className="text-xl font-semibold text-gold mb-2">
+                      {testimonial.name}
+                    </h4>
+                    <div className="flex justify-center gap-1 text-gold">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <FaStar key={i} className="w-4 h-4" />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -221,7 +236,7 @@ export default function Home() {
 
       <section id="contact" className="py-20 bg-black text-white">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-light mb-12 font-latienne">Suivez-nous</h2>
+          <h2 className="text-4xl font-light mb-12 font-bodoni">Suivez-nous</h2>
           <div className="flex justify-center space-x-8">
             <motion.a 
               href="#" 
